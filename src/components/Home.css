@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.top_banner{
+    padding: 30px 40px;
+    width: 100%;
+    background-color: #e3edf6;
+}
+
+.top_banner .container{
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
