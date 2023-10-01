@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import { FiTruck } from "react-icons/fi";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { CiPercent } from "react-icons/ci";
 import { BiHeadphone } from "react-icons/bi";
+import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
+import { BsEye } from "react-icons/bs";
+import Homeproduct from "./HomeProduct";
 import "./Home.css";
 
 const Home = () => {
@@ -103,10 +106,27 @@ const Home = () => {
       </div>
 
       <div className="product">
+        <h2>Top Products</h2>
         <div className="container">
-          <div className="box">
-            
-          </div>
+            {Homeproduct.map((curElm) => {
+              return (
+                <div className="box" key={curElm.id}>
+                  <div className="img_box">
+                    <img src={curElm.Img} alt={curElm.Title} />
+                    <div className="icon">
+                      <li><AiOutlineShoppingCart /></li>
+                      <li><BsEye /></li>
+                      <li><AiOutlineHeart /></li>
+                    </div>
+                  </div>
+                  <div className="detail">
+                    <p>{curElm.Cat}</p>
+                    <h3>{curElm.Title}</h3>
+                    <h4>{curElm.Price}</h4>
+                  </div>
+                </div>
+              );
+            })}
         </div>
       </div>
     </>
