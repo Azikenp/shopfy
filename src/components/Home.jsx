@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import { FiTruck } from "react-icons/fi";
-import { BsCurrencyDollar } from "react-icons/bs";
+import { BsArrowRight, BsCurrencyDollar } from "react-icons/bs";
 import { CiPercent } from "react-icons/ci";
 import { BiHeadphone } from "react-icons/bi";
 import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
@@ -127,6 +127,20 @@ const Home = () => {
                 </div>
               );
             })}
+        </div>
+      </div>
+
+      <div className="banner">
+        <div className="container">
+        <div className="detail">
+          <h4>LATEST TECHNOLOGY ADDED</h4>
+          <h3>Apple Ipad 10.2 9th Gen - 2021</h3>
+          <p>$986</p>
+          <Link to="/product" className="link">Shop Now <BsArrowRight /></Link>
+        </div>
+        <div className="img_box">
+          <img src="./img/slider-img.png" alt="" />
+        </div>
         </div>
       </div>
     </>
