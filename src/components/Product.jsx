@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Productdetail from "./ProductDetail";
 import "./Product.css";
-import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineCloseCircle, AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
 import { BsEye } from "react-icons/bs";
 
-const Product = () => {
-  const [product, setProduct] = useState(Productdetail);
-
+const Product = ({ product, setProduct, detail, view, close, setClose }) => {
   const filterProducts = (product) => {
     const update = Productdetail.filter((x) => {
       return x.Cat === product;
@@ -17,9 +15,30 @@ const Product = () => {
   const allProducts = () => {
     setProduct(Productdetail);
   };
-  
+
   return (
     <>
+      <div className="product_detail">
+        <div className="container">
+          <button onClick={() => close()}><AiOutlineCloseCircle /></button>
+          {detail.map((curElm) => {
+            return (
+              <div className="productbox">
+                <div className="img_box">
+                  <img src={curElm.Img} alt={curElm.Title} />
+                </div>
+                <div className="detail">
+                  <h4>{curElm.Cat}</h4>
+                  <h2>{curElm.Title}</h2>
+                  <p>A screen everyone will love whether your family is streaming or video chatting with friends Tablet A8 . . . </p>
+                  <h3>{curElm.Price}</h3>
+                  <button>Add to cart</button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
       <div className="products">
         <h2>#Products</h2>
         <p>Home . products</p>
@@ -51,7 +70,7 @@ const Product = () => {
                           <li>
                             <AiOutlineShoppingCart />
                           </li>
-                          <li>
+                          <li onClick={() => view(curElm)}>
                             <BsEye />
                           </li>
                           <li>

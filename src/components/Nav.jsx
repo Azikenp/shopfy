@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaRegHeart, FaTruckMoving } from "react-icons/fa";
 import { BsBagCheck } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import "./Nav.css";
 
-const Nav = () => {
+const Nav = ({ searchBtn }) => {
+  const [search, setSearch] = useState("");
   const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
   return (
     <>
@@ -26,11 +27,12 @@ const Nav = () => {
           <div className="search_box">
             <input
               type="text"
-              value=""
+              value={search}
               placeholder="Enter The Product Name..."
               autoComplete="off"
+              onChange={(e) => setSearch(e.target.value)}
             />
-            <button>Search</button>
+            <button onClick={() => searchBtn(search)}>Search</button>
           </div>
           <div className="icon">
             {isAuthenticated && (
