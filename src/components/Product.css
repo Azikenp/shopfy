@@ -143,7 +143,7 @@
     color: #0989ff;
     letter-spacing: 1px;
 }
-/* .product_detail
+.product_detail
 {
     margin-top: 30px;
     padding: 30px 40px;
@@ -167,7 +167,7 @@
 }
 .product_detail .container .closebtn
 {
-    margin-left: 100%;
+    margin-left: 99%;
     border: none;
     outline: none;
     background: none;
@@ -242,4 +242,4 @@
 .product_detail .container .productbox .detail button:hover
 {
     background: #0989ff;
-} */
+}

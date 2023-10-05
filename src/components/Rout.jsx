@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import Product from "./Product";
 
-const Rout = ({ product, setProduct, detail, view, setClose }) => {
+const Rout = ({ product, setProduct, detail, view, close, setClose }) => {
   return (
     <>
       <Routes>
