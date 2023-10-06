@@ -5,12 +5,18 @@ import { FiTruck } from "react-icons/fi";
 import { BsArrowRight, BsCurrencyDollar } from "react-icons/bs";
 import { CiPercent } from "react-icons/ci";
 import { BiHeadphone } from "react-icons/bi";
-import { AiOutlineCloseCircle, AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
+import {
+  AiOutlineCloseCircle,
+  AiOutlineHeart,
+  AiOutlineShoppingCart,
+} from "react-icons/ai";
+import { useAuth0 } from "@auth0/auth0-react";
 import { BsEye } from "react-icons/bs";
 import Homeproduct from "./HomeProduct";
 import "./Home.css";
 
-const Home = ({detail, view, close, setClose, addToCart}) => {
+const Home = ({ detail, view, close, setClose, addToCart }) => {
+  const { loginWithRedirect, isAuthenticated } = useAuth0();
   return (
     <>
       {close ? (
@@ -142,9 +148,15 @@ const Home = ({detail, view, close, setClose, addToCart}) => {
                 <div className="img_box">
                   <img src={curElm.Img} alt={curElm.Title} />
                   <div className="icon">
-                    <li onClick={() => addToCart(curElm)}>
-                      <AiOutlineShoppingCart />
-                    </li>
+                    {isAuthenticated ? (
+                      <li onClick={() => addToCart(curElm)}>
+                        <AiOutlineShoppingCart />
+                      </li>
+                    ) : (
+                      <li onClick={() => loginWithRedirect()}>
+                        <AiOutlineShoppingCart />
+                      </li>
+                    )}
                     <li onClick={() => view(curElm)}>
                       <BsEye />
                     </li>

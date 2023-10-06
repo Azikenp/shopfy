@@ -6,9 +6,19 @@ import {
   AiOutlineHeart,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
+import { useAuth0 } from "@auth0/auth0-react";
 import { BsEye } from "react-icons/bs";
 
-const Product = ({ product, setProduct, detail, view, close, setClose, addToCart }) => {
+const Product = ({
+  product,
+  setProduct,
+  detail,
+  view,
+  close,
+  setClose,
+  addToCart,
+}) => {
+  const { loginWithRedirect, isAuthenticated } = useAuth0();
   const filterProducts = (product) => {
     const update = Productdetail.filter((x) => {
       return x.Cat === product;
@@ -78,9 +88,15 @@ const Product = ({ product, setProduct, detail, view, close, setClose, addToCart
                       <div className="img_box">
                         <img src={curElm.Img} alt={curElm.Title} />
                         <div className="icon">
-                          <li onClick={() => addToCart(curElm)}>
-                            <AiOutlineShoppingCart />
-                          </li>
+                          {isAuthenticated ? (
+                            <li onClick={() => addToCart(curElm)}>
+                              <AiOutlineShoppingCart />
+                            </li>
+                          ) : (
+                            <li onClick={() => loginWithRedirect()}>
+                              <AiOutlineShoppingCart />
+                            </li>
+                          )}
                           <li onClick={() => view(curElm)}>
                             <BsEye />
                           </li>

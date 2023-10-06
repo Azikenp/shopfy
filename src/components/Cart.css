@@ -160,4 +160,9 @@
     outline: none;
     background: #0989ff;
     cursor: pointer;
+    transition: 0.5s;
+}
+
+.container .checkout:hover{
+    background-color: #0988ffc5;
 }
