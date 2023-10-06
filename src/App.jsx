@@ -6,6 +6,8 @@ import Footer from "./components/Footer";
 import Productdetail from "./components/ProductDetail";
 
 const App = () => {
+  //add to cart
+  const [cart, setCart] = useState([]);
   //product details
   const [close, setClose] = useState(false);
   const [detail, setDetail] = useState([]);
@@ -22,6 +24,18 @@ const App = () => {
     setDetail([{ ...product }]);
     setClose(true);
   };
+
+  const addToCart = (product) => {
+    const exist = cart.find((x) => {
+      return x.id === product.id;
+    });
+    if (exist) {
+      alert("This product is already added to cart");
+    } else {
+      setCart([...cart, { ...product, qty: 1 }]);
+      alert("product is added to cart");
+    }
+  };
   return (
     <>
       <BrowserRouter>
@@ -33,6 +47,9 @@ const App = () => {
           view={view}
           close={close}
           setClose={setClose}
+          cart={cart}
+          setCart={setCart}
+          addToCart={addToCart}
         />
         <Footer />
       </BrowserRouter>

@@ -8,7 +8,7 @@ import {
 } from "react-icons/ai";
 import { BsEye } from "react-icons/bs";
 
-const Product = ({ product, setProduct, detail, view, close, setClose }) => {
+const Product = ({ product, setProduct, detail, view, close, setClose, addToCart }) => {
   const filterProducts = (product) => {
     const update = Productdetail.filter((x) => {
       return x.Cat === product;
@@ -30,7 +30,7 @@ const Product = ({ product, setProduct, detail, view, close, setClose }) => {
             </button>
             {detail.map((curElm) => {
               return (
-                <div className="productbox">
+                <div className="productbox" key={curElm.id}>
                   <div className="img_box">
                     <img src={curElm.Img} alt={curElm.Title} />
                   </div>
@@ -78,7 +78,7 @@ const Product = ({ product, setProduct, detail, view, close, setClose }) => {
                       <div className="img_box">
                         <img src={curElm.Img} alt={curElm.Title} />
                         <div className="icon">
-                          <li>
+                          <li onClick={() => addToCart(curElm)}>
                             <AiOutlineShoppingCart />
                           </li>
                           <li onClick={() => view(curElm)}>

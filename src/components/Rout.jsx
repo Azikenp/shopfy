@@ -2,12 +2,24 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import Product from "./Product";
+import Cart from "./Cart";
 
-const Rout = ({ product, setProduct, detail, view, close, setClose }) => {
+const Rout = ({ product, setProduct, detail, view, close, setClose, cart, setCart, addToCart }) => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <Home
+              detail={detail}
+              view={view}
+              close={close}
+              setClose={setClose}
+              addToCart={addToCart}
+            />
+          }
+        />
         <Route
           path="/product"
           element={
@@ -18,9 +30,11 @@ const Rout = ({ product, setProduct, detail, view, close, setClose }) => {
               view={view}
               close={close}
               setClose={setClose}
+              addToCart={addToCart}
             />
           }
         />
+        <Route path="/cart" element={<Cart cart={cart} setCart = {setCart} />} />
       </Routes>
     </>
   );
